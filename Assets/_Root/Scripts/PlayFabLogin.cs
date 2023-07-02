@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Collections.Generic;
 
 public class PlayFabLogin : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayFabLogin : MonoBehaviour
     [SerializeField] TMP_Text error;
 
     private const string AuthGuidKey = "authorization-guid";
+    private readonly Dictionary<string, CatalogItem> _catalog = new Dictionary<string, CatalogItem>();
 
     public void Start()
     {
@@ -55,9 +57,21 @@ public class PlayFabLogin : MonoBehaviour
         {
             CustomId = id,
             CreateAccount = !needCreation
-        }, success => { 
+        }, success =>
+        {
             error.enabled = false;
-            PlayerPrefs.SetString(AuthGuidKey, id); 
+            PlayerPrefs.SetString(AuthGuidKey, id);
+
+            PlayFabClientAPI.GetCatalogItems(new GetCatalogItemsRequest(), result =>
+            {
+                HandleCatalog(result.Catalog);
+                Debug.Log($"Catalog was loaded successfully!");
+            },
+            error =>
+            {
+                var errorMessage = error.GenerateErrorReport();
+                Debug.LogError($"Something went wrong: {errorMessage}");
+            });
         }, err =>
         {
             Debug.LogError($"Fail: {err.ErrorMessage}");
@@ -66,6 +80,14 @@ public class PlayFabLogin : MonoBehaviour
         });
     }
 
+    private void HandleCatalog(List<CatalogItem> catalog)
+    {
+        foreach (var item in catalog)
+        {
+            _catalog.Add(item.ItemId, item);
+            Debug.Log($"Catalog item {item.ItemId} was added successfully!");
+        }
+    }
     // public void LogOut()
     // {
     //     PlayFabClientAPI.ForgetAllCredentials();

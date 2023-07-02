@@ -1,0 +1,53 @@
+{
+    "CatalogVersion": "1.0",
+    "Catalog": [
+        {
+            "ItemId": "shield_level_5",
+            "ItemClass": "",
+            "CatalogVersion": "1.0",
+            "DisplayName": "Level 5 Shield",
+            "Description": "It's my first catalog item ever. SOS.",
+            "VirtualCurrencyPrices": {
+                "AU": 100
+            },
+            "RealCurrencyPrices": {},
+            "Tags": [],
+            "CustomData": "null",
+            "Consumable": {
+                "UsageCount": null,
+                "UsagePeriod": null,
+                "UsagePeriodGroup": null
+            },
+            "Container": null,
+            "Bundle": null,
+            "CanBecomeCharacter": false,
+            "IsStackable": false,
+            "IsTradable": false,
+            "ItemImageUrl": null
+        },
+        {
+            "ItemId": "axe_level_5",
+            "ItemClass": "",
+            "CatalogVersion": "1.0",
+            "DisplayName": "Level 5 Axe",
+            "Description": "Секира пятого уровня",
+            "VirtualCurrencyPrices": {
+                "AU": 100
+            },
+            "RealCurrencyPrices": {},
+            "Tags": [],
+            "CustomData": "null",
+            "Consumable": {
+                "UsageCount": null,
+                "UsagePeriod": null,
+                "UsagePeriodGroup": null
+            },
+            "Container": null,
+            "Bundle": null,
+            "CanBecomeCharacter": false,
+            "IsStackable": false,
+            "IsTradable": false,
+            "ItemImageUrl": null
+        }
+    ]
+}
