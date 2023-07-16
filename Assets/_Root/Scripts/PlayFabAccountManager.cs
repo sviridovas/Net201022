@@ -8,8 +8,7 @@ public class PlayFabAccountManager : MonoBehaviour
     [SerializeField] private TMP_Text _titleLabel;
     private void Start()
     {
-        PlayFabClientAPI.GetAccountInfo(new GetAccountInfoRequest(),
-        OnGetAccountSuccess, OnFailure);
+        PlayFabClientAPI.GetAccountInfo(new GetAccountInfoRequest(), OnGetAccountSuccess, OnFailure);
     }
     private void OnGetAccountSuccess(GetAccountInfoResult result)
     {
